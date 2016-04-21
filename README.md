@@ -9,11 +9,11 @@ MicroPython is a lean and fast implementation of the Python 3 programming langua
 
 ### MicroPython
 
- * `1.6`
+ * `1.x`
 
 ### MicroPython-lib
 
- * `1.0`
+ * `1.x`
 
 ## Available Packages
 
