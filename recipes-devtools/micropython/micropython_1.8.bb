@@ -14,8 +14,8 @@ SRC_URI = " \
 	https://github.com/micropython/micropython/archive/v${PV}.tar.gz;name=src \
 "
 
-SRC_URI[src.md5sum] = "4aba47fa41f890e688f1497b67c9e5aa"
-SRC_URI[src.sha256sum] = "ad44d28700d346ceb9a70ae92d36306d42e187fc1af19fa2c7a3ab7dc18742ef"
+SRC_URI[src.md5sum] = "3fdb8c18786dae31c4eaef5d7d62f5cf"
+SRC_URI[src.sha256sum] = "0890bc0250cb212e0bd8aec4b2d4f83428e5a031bbb0bb92882f5c8a3e7a092e"
 
 DEPENDS = "libffi"
 
