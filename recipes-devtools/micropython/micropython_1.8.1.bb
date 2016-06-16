@@ -11,13 +11,14 @@ INC_PR = "r1"
 PR = "${INC_PR}.0"
 
 SRC_URI = " \
-	https://github.com/micropython/micropython/archive/v${PV}.tar.gz;name=src \
+	gitsm://github.com/micropython/micropython.git;name=src;tag=v${PV} \
 "
 
-SRC_URI[src.md5sum] = "3fdb8c18786dae31c4eaef5d7d62f5cf"
-SRC_URI[src.sha256sum] = "0890bc0250cb212e0bd8aec4b2d4f83428e5a031bbb0bb92882f5c8a3e7a092e"
+S = "${WORKDIR}/git"
 
 DEPENDS = "libffi"
+
+CPPFLAGS_append = " -Wno-error"
 
 EXTRA_OEMAKE = " \
 	-C ${S}/unix \
@@ -31,6 +32,7 @@ EXTRA_OEMAKE = " \
 "
 
 do_compile() {
+	oe_runmake axtls
 	oe_runmake micropython
 }
 
