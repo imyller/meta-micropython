@@ -26,7 +26,7 @@ MicroPython is a lean and fast implementation of the Python 3 programming langua
 	
 Add `meta-micropython` layer to `EXTRALAYERS` in `conf/bblayers.conf`. For example:
 
-	```bitbake
+	```
 		EXTRALAYERS +=" \
 			${TOPDIR}/sources/meta-micropython \
 		"
