@@ -15,7 +15,7 @@ MicroPython is a lean and fast implementation of the Python 3 programming langua
 
  * `1.x`
 
-## Available Packages
+## Available MicroPython core packages
 
  * `micropython`
  * `micropython-native`
