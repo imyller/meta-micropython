@@ -14,8 +14,8 @@ SRC_URI = " \
 	https://github.com/micropython/micropython-lib/archive/v${PV}.tar.gz;name=src \
 "
 
-SRC_URI[src.md5sum] = "d4092764630314609ef2a4d2d9d26d14"
-SRC_URI[src.sha256sum] = "e659444fadd755c1b5dbff091aa1b23a835e7361da3a32f38774bd39a15937ad"
+SRC_URI[src.md5sum] = "a888e5ee336323041da24762501b49fa"
+SRC_URI[src.sha256sum] = "4f9250a93413c9925b912d54fe3aaee2d275c82bdb447fc07a090fc60287f5e8"
 
 RDEPENDS_${PN} = "micropython"
 RDEPENDS_${PN}-native = "micropython-native"
@@ -31,7 +31,7 @@ do_configure() {
 do_install() {
 	oe_runmake -C ${S} PREFIX=${B} install	
 	install -d ${D}${libdir}/micropython
-	cp -r ${B}/* ${D}${libdir}/micropython/
+	cp -r --preserve=mode,links ${B}/* ${D}${libdir}/micropython/
 }
 
 FILES_${PN} = " \
