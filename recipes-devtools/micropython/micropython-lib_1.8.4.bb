@@ -14,8 +14,8 @@ SRC_URI = " \
 	https://github.com/micropython/micropython-lib/archive/v${PV}.tar.gz;name=src \
 "
 
-SRC_URI[src.md5sum] = "a888e5ee336323041da24762501b49fa"
-SRC_URI[src.sha256sum] = "4f9250a93413c9925b912d54fe3aaee2d275c82bdb447fc07a090fc60287f5e8"
+SRC_URI[src.md5sum] = "f1c4fe51b7cb746954460567e241dac8"
+SRC_URI[src.sha256sum] = "e7854eecab0910731ac181f3202302420d7d0d737adb1558347c42830417b29e"
 
 RDEPENDS_${PN} = "micropython"
 RDEPENDS_${PN}-native = "micropython-native"
