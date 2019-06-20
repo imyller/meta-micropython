@@ -5,7 +5,7 @@ SECTION = "devel/python"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a8a14efdd86622bc2a34296228779da7"
 
-inherit autotools-brokensep
+inherit autotools-brokensep pkgconfig
 
 INC_PR = "r1"
 PR = "${INC_PR}.0"
@@ -42,7 +42,7 @@ do_configure() {
 
 RRECOMMENDS_${PN} = "micropython-lib"
 
-INSANE_SKIP_${PN} = "already-stripped"
+INSANE_SKIP_${PN} = "already-stripped ldflags"
 
 BBCLASSEXTEND = "native"
 
