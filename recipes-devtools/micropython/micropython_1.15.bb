@@ -3,9 +3,7 @@ HOMEPAGE = "https://micropython.org"
 SECTION = "devel/python"
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=a8a14efdd86622bc2a34296228779da7"
-
-inherit autotools-brokensep pkgconfig
+LIC_FILES_CHKSUM = "file://LICENSE;md5=4d13714d609dce89ca5832f2e0864344"
 
 INC_PR = "r1"
 PR = "${INC_PR}.0"
@@ -19,30 +17,40 @@ S = "${WORKDIR}/git"
 
 DEPENDS = "libffi python3-native"
 
+inherit autotools-brokensep
+
 EXTRA_OEMAKE = " \
-	-C ${S}/unix \
 	MICROPY_USE_READLINE=0 \
 	V=1 \
 	DESTDIR="${D}" \
-        CWARN=" -Wno-error" \
 	CC="${CC}" \
 	LD="${LD}" \
 	CROSS_COMPILE="${TARGET_PREFIX}" \
+        CWARN=" -Wno-error" \
 	PREFIX="${D}/usr" \
         PYTHON="python3" \
 "
 
 do_compile() {
-	oe_runmake axtls
-	oe_runmake micropython
+	make -C ${S}/mpy-cross
+	oe_runmake -C ${S}/ports/unix submodules
+	oe_runmake -C ${S}/ports/unix
 }
 
 do_configure() {
 	:
 }
 
+do_install() {
+        install -d ${D}${bindir}/
+        cp -r --preserve=mode,links ${B}/ports/unix/micropython ${D}${bindir}/
+}
+
+FILES_${PN} = " \
+        ${bindir}/micropython \
+"
+
+
 RRECOMMENDS_${PN} = "micropython-lib"
 
 INSANE_SKIP_${PN} = "already-stripped ldflags"
-
-BBCLASSEXTEND = "native"
