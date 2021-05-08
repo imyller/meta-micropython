@@ -5,30 +5,31 @@ SECTION = "devel/python"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=a8a14efdd86622bc2a34296228779da7"
 
-inherit autotools-brokensep
+inherit autotools-brokensep pkgconfig
 
 INC_PR = "r1"
 PR = "${INC_PR}.0"
 
 SRC_URI = " \
 	gitsm://github.com/micropython/micropython.git;name=src;tag=v${PV} \
+        file://001-force-python3.patch \
 "
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "libffi"
-
-CPPFLAGS_append = " -Wno-error"
+DEPENDS = "libffi python3-native"
 
 EXTRA_OEMAKE = " \
 	-C ${S}/unix \
 	MICROPY_USE_READLINE=0 \
 	V=1 \
 	DESTDIR="${D}" \
+        CWARN=" -Wno-error" \
 	CC="${CC}" \
 	LD="${LD}" \
 	CROSS_COMPILE="${TARGET_PREFIX}" \
 	PREFIX="${D}/usr" \
+        PYTHON="python3" \
 "
 
 do_compile() {
@@ -42,7 +43,6 @@ do_configure() {
 
 RRECOMMENDS_${PN} = "micropython-lib"
 
-INSANE_SKIP_${PN} = "already-stripped"
+INSANE_SKIP_${PN} = "already-stripped ldflags"
 
 BBCLASSEXTEND = "native"
-
