@@ -1,0 +1,9 @@
+diff -ur git.org/tools/make-frozen.py git/tools/make-frozen.py
+--- git.org/tools/make-frozen.py	2021-05-08 11:07:17.883825233 +0000
++++ git/tools/make-frozen.py	2021-05-08 11:07:57.808084055 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ #
+ # Create frozen modules structure for MicroPython.
+ #
